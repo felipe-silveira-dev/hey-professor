@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Question;
+use App\Rules\EndWithQuestionMarkRule;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,14 @@ class QuestionController extends Controller
         // $question->question = request()->question;
         // $question->save();
 
-        $attributes = request()->validate(['question' => ['required']]);
+        $attributes = request()->validate([
+            'question' => [
+                'required',
+                'min:10',
+                'string',
+                new EndWithQuestionMarkRule(),
+            ],
+        ]);
 
         Question::query()->create($attributes);
 
