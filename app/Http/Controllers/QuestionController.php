@@ -14,7 +14,9 @@ class QuestionController extends Controller
         // $question->question = request()->question;
         // $question->save();
 
-        $attributes = request()->validate(['question' => ['required']]);
+        $attributes = request()->validate([
+            'question' => ['required', 'min:10'],
+        ]);
 
         Question::query()->create($attributes);
 
