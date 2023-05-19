@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Question;
 use App\Rules\EndWithQuestionMarkRule;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
+use Illuminate\Http\{RedirectResponse, Request};
 
 class QuestionController extends Controller
 {
