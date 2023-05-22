@@ -9,7 +9,9 @@ class DashboardController extends Controller
     public function __invoke(): \Illuminate\Contracts\View\View
     {
         return view('dashboard', [
-            'questions' => Question::all(),
+            'questions' => Question::withSum('votes', 'like')
+                    ->withSum('votes', 'unlike')
+                    ->get(),
         ]);
     }
 }

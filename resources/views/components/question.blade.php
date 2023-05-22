@@ -9,13 +9,13 @@
                     <x-form :action="route('question.like', $question)">
                         <button class="flex space-x-1 text-blue-700">
                             <x-icons.thumbs-up class="w-6 h-6 hover:text-blue-800 cursor-pointer" />
-                            <span>{{ $question->likes }}</span>
+                            <span>{{ $question->votes_sum_like ?: 0 }}</span>
                         </button>
                     </x-form>
                     <x-form :action="route('question.unlike', $question)">
                         <button class="flex text-red-700 space-x-1">
                             <x-icons.thumbs-down class="w-6 h-6 hover:text-red-800 cursor-pointer" />
-                            <span>{{ $question->unlikes }}</span>
+                            <span>{{ $question->votes_sum_unlike ?: 0 }}</span>
                         </button>
                     </x-form>
                 </div>

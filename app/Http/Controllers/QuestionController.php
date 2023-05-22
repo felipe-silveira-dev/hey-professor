@@ -10,10 +10,6 @@ class QuestionController extends Controller
 {
     public function store(): RedirectResponse
     {
-        // $question = new Question();
-        // $question->question = request()->question;
-        // $question->save();
-
         $attributes = request()->validate([
             'question' => [
                 'required',
