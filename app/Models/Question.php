@@ -25,4 +25,9 @@ class Question extends Model
     {
         return new Attribute(fn() => $this->votes()->sum('like'));
     }
+
+    public function unlikes(): Attribute
+    {
+        return new Attribute(fn() => $this->votes()->sum('unlike'));
+    }
 }
