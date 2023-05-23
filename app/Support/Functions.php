@@ -7,5 +7,6 @@ function user(): ?User
     if(!auth()->check()) {
         return null;
     }
+
     return auth()->user();
 }
