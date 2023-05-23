@@ -1,8 +1,7 @@
 <?php
 
-use App\Http\Controllers\Question\LikeController;
+use App\Http\Controllers\Question\{LikeController, UnlikeController};
 use App\Http\Controllers\{DashboardController, ProfileController, QuestionController};
-use App\Http\Controllers\Question\UnlikeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {

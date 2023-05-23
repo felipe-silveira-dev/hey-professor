@@ -23,11 +23,11 @@ class Question extends Model
 
     public function likes(): Attribute
     {
-        return new Attribute(fn() => $this->votes()->sum('like'));
+        return new Attribute(fn () => $this->votes()->sum('like'));
     }
 
     public function unlikes(): Attribute
     {
-        return new Attribute(fn() => $this->votes()->sum('unlike'));
+        return new Attribute(fn () => $this->votes()->sum('unlike'));
     }
 }

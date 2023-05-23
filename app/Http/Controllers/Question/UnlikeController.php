@@ -9,9 +9,9 @@ use Illuminate\Http\RedirectResponse;
 class UnlikeController extends Controller
 {
     public function __invoke(Question $question): RedirectResponse
-    {   
+    {
         user()->unlike($question);
-        
+
         return back();
     }
 }

@@ -59,12 +59,12 @@ class User extends Authenticatable implements MustVerifyEmail
     public function like(Question $question): void
     {
         $this->votes()->updateOrCreate(
-            ['question_id' => $question->id,], 
-        [
-            'like'   => 1,
-            'unlike' => 0,
-        ]
-    );
+            ['question_id' => $question->id, ],
+            [
+                'like'   => 1,
+                'unlike' => 0,
+            ]
+        );
     }
 
     /**
@@ -73,11 +73,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function unlike(Question $question): void
     {
         $this->votes()->updateOrCreate(
-            ['question_id' => $question->id,], 
-        [
-            'like'   => 0,
-            'unlike' => 1,
-        ]
-    );
+            ['question_id' => $question->id, ],
+            [
+                'like'   => 0,
+                'unlike' => 1,
+            ]
+        );
     }
 }
