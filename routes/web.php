@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Question\{LikeController, UnlikeController};
+use App\Http\Controllers\Question\{LikeController, PublishController, UnlikeController};
 use App\Http\Controllers\{DashboardController, ProfileController, QuestionController};
 use Illuminate\Support\Facades\Route;
 
@@ -25,5 +25,6 @@ Route::get('/dashboard', DashboardController::class)->middleware(['auth', 'verif
 Route::post('question/store', [QuestionController::class, 'store'])->name('question.store');
 Route::post('question/like/{question}', LikeController::class)->name('question.like');
 Route::post('question/unlike/{question}', UnlikeController::class)->name('question.unlike');
+Route::put('question/publish/{question}', PublishController::class)->name('question.publish');
 
 require __DIR__ . '/auth.php';
