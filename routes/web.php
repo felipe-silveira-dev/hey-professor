@@ -19,6 +19,7 @@ Route::get('/dashboard', DashboardController::class)->middleware(['auth', 'verif
 Route::middleware('auth')->group(function () {
     // Questions routes
     Route::prefix('question/')->name('question.')->group(function () {
+        Route::get('/', [QuestionController::class, 'index'])->name('index');
         Route::post('store', [QuestionController::class, 'store'])->name('store');
         Route::post('like/{question}', LikeController::class)->name('like');
         Route::post('unlike/{question}', UnlikeController::class)->name('unlike');

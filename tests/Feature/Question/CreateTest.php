@@ -53,7 +53,7 @@ it('should check if ends with question mark ?', function () {
     ]);
 
     // Assert::verificar
-    $request->assertSessionHasErrors(['question' => 'Are you sure taht is a question? It is missing the end mark.']);
+    $request->assertSessionHasErrors(['question' => 'Are you sure that is a question? It is missing the end mark.']);
     assertDatabaseCount('questions', 0);
 });
 
