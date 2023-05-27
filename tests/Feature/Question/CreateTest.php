@@ -4,6 +4,12 @@ use App\Models\User;
 
 use function Pest\Laravel\{actingAs, assertDatabaseCount, assertDatabaseHas, post};
 
+test('only authenticated users can create a question', function () {
+    // Act::agir
+    post(route('question.store'))->assertRedirect(route('login'));
+    assertDatabaseCount('questions', 0);
+});
+
 it('should be able to create a new question bigger than 255 characters', function () {
     // Arrange::preparar
     $user = User::factory()->create();
