@@ -24,6 +24,7 @@ Route::middleware('auth')->group(function () {
         Route::post('like/{question}', LikeController::class)->name('like');
         Route::post('unlike/{question}', UnlikeController::class)->name('unlike');
         Route::put('publish/{question}', PublishController::class)->name('publish');
+        Route::delete('destroy/{question}', [QuestionController::class, 'destroy'])->name('destroy');
     });
     // End Questions routesag
 

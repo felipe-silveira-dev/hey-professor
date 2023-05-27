@@ -13,4 +13,9 @@ class QuestionPolicy
     {
         return $question->createdBy->is($user);
     }
+
+    public function delete(User $user, Question $question): bool
+    {
+        return $this->publish($user, $question);
+    }
 }
