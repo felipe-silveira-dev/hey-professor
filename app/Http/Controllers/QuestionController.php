@@ -34,6 +34,11 @@ class QuestionController extends Controller
         return back();
     }
 
+    public function edit(Question $question): void
+    {
+
+    }
+
     public function destroy(Question $question): RedirectResponse
     {
         $this->authorize('delete', $question);
