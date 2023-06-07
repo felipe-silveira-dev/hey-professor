@@ -16,11 +16,11 @@ class QuestionPolicy
 
     public function update(User $user, Question $question): bool
     {
-        return $question->draft;
+        return $question->draft && $question->createdBy->is($user);
     }
 
     public function delete(User $user, Question $question): bool
     {
-        return $this->publish($user, $question);
+        return $question->createdBy->is($user);
     }
 }
