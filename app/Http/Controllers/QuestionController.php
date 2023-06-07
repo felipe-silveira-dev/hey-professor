@@ -57,7 +57,7 @@ class QuestionController extends Controller
         $question->question = request()->question;
         $question->save();
 
-        return back();
+        return redirect()->route('question.index');
     }
 
     public function destroy(Question $question): RedirectResponse

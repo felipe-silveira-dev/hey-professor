@@ -54,6 +54,7 @@
                                 <x-form delete :action="route('question.destroy', $item->id)">
                                     <x-button.primary type="submit" text="Delete" />
                                 </x-form>
+                                <a href="{{ route('question.edit', $item) }}" class="text-blue-500 hover:underline">Edit</a>
                             </x-table.td>
                         </x-table.tr>
                     @endforeach
