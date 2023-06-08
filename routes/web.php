@@ -14,9 +14,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', DashboardController::class)->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', DashboardController::class)->name('dashboard');
     // Questions routes
     Route::prefix('question/')->name('question.')->group(function () {
         Route::get('/', [QuestionController::class, 'index'])->name('index');
