@@ -24,6 +24,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/{question}/edit', [QuestionController::class, 'edit'])->name('edit');
         Route::put('/{question}', [QuestionController::class, 'update'])->name('update');
         Route::patch('/{question}/archive', [QuestionController::class, 'archive'])->name('archive');
+        Route::patch('/{question}/restore', [QuestionController::class, 'restore'])->name('restore');
         Route::post('like/{question}', LikeController::class)->name('like');
         Route::post('unlike/{question}', UnlikeController::class)->name('unlike');
         Route::put('publish/{question}', PublishController::class)->name('publish');
