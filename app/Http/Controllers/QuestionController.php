@@ -11,7 +11,8 @@ class QuestionController extends Controller
     public function index(): \Illuminate\Contracts\View\View
     {
         return view('question.index', [
-            'questions' => user()->questions,
+            'questions'         => user()->questions,
+            'archivedQuestions' => user()->questions()->onlyTrashed()->get(),
         ]);
     }
 
@@ -60,10 +61,27 @@ class QuestionController extends Controller
         return redirect()->route('question.index');
     }
 
+    public function archive(Question $question): RedirectResponse
+    {
+        $this->authorize('archive', $question);
+        $question->delete();
+
+        return back();
+    }
+
+    public function restore(int $id): RedirectResponse
+    {
+        $question = Question::withTrashed()->find($id);
+        $this->authorize('restore', $question);
+        $question->restore();
+
+        return back();
+    }
+
     public function destroy(Question $question): RedirectResponse
     {
         $this->authorize('delete', $question);
-        $question->delete();
+        $question->forceDelete();
 
         return back();
     }

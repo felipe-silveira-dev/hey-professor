@@ -4,12 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\{BelongsTo, HasMany};
+use Illuminate\Database\Eloquent\{Builder, Model, Prunable, SoftDeletes};
 
 class Question extends Model
 {
     use HasFactory;
+    use SoftDeletes;
+    use Prunable;
 
     protected $casts = [
         'draft' => 'bool',
@@ -36,5 +38,10 @@ class Question extends Model
     public function unlikes(): Attribute
     {
         return new Attribute(fn () => $this->votes()->sum('unlike'));
+    }
+
+    public function prunable(): Builder
+    {
+        return static::where('deleted_at', '<=', now()->subMonth());
     }
 }
