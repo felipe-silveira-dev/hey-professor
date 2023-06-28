@@ -51,15 +51,46 @@
                                 <x-form put :action="route('question.publish', $item->id)">
                                     <x-button.primary type="submit" text="Publish" />
                                 </x-form>
-                                <x-form delete :action="route('question.destroy', $item->id)">
+                                <x-form delete :action="route('question.destroy', $item->id)" onsubmit="return confirm('Are you sure?')">
                                     <x-button.primary type="submit" text="Delete" />
                                 </x-form>
-                                <a href="{{ route('question.edit', $item) }}" class="text-blue-500 hover:underline">Edit</a>
+                                <x-form patch :action="route('question.archive', $item->id)">
+                                    <x-button.primary type="submit" text="Archive" />
+                                </x-form>
+                                <x-button.primary>
+                                    <a href="{{ route('question.edit', $item) }}">Edit</a>
+                                </x-button.primary>
                             </x-table.td>
                         </x-table.tr>
                     @endforeach
                 </tbody>
             </x-table>
-          </div>
+            <div class="mt-6">
+                <h2 class="text-2xl font-semibold">My Archive Questions</h2>
+            </div>
+            <x-table>
+                <x-table.thead>
+                    <tr>
+                        <x-table.th>Draft</x-table.th>
+                        <x-table.th>Actions</x-table.th>
+                    </tr>
+                </x-table.thead>
+                <tbody>
+                    @foreach ($archivedQuestions as $item)
+                        <x-table.tr>
+                            <x-table.td>{{ $item->question }}</x-table.td>
+                            <x-table.td>
+                                <x-form patch :action="route('question.restore', $item->id)">
+                                    <x-button.primary type="submit" text="Restore" />
+                                </x-form>
+                                <x-form delete :action="route('question.destroy', $item->id)" onsubmit="return confirm('Are you sure?')">
+                                    <x-button.primary type="submit" text="Delete" />
+                                </x-form>
+                            </x-table.td>
+                        </x-table.tr>
+                    @endforeach
+                </tbody>
+            </x-table>
+        </div>
     </x-container>
 </x-app-layout>
