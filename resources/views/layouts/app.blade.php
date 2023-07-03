@@ -40,5 +40,6 @@
                 document.documentElement.classList.remove('dark')
             }
         </script>
+        <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
     </body>
 </html>
