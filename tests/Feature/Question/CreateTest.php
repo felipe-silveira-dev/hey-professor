@@ -2,7 +2,7 @@
 
 use App\Models\User;
 
-use function Pest\Laravel\{actingAs, assertDatabaseCount, assertDatabaseHas, post};
+use function Pest\Laravel\{actingAs, assertDatabaseCount, assertDatabaseHas, post, postJson};
 
 test('only authenticated users can create a question', function () {
     // Act::agir
@@ -70,4 +70,16 @@ it('should have at least 10 characters', function () {
     // Assert::verificar
     $request->assertSessionHasErrors(['question' => __('validation.min.string', ['min' => 10, 'attribute' => 'question'])]);
     assertDatabaseCount('questions', 0);
+});
+
+it('question should be unique', function () {
+    // Arrange::preparar
+    $user     = User::factory()->create();
+    $question = $user->questions()->create([
+        'question' => 'Same question?',
+    ]);
+    actingAs($user);
+    post(route('question.store'), [
+        'question' => 'Same question?',
+    ])->assertSessionHasErrors(['question' => 'This question already exists.']);
 });
