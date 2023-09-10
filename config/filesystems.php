@@ -56,6 +56,22 @@ return [
             'throw'                   => false,
         ],
 
+        'avatars' => [
+            'driver'     => 'local',
+            'root'       => storage_path('app/avatars'),
+            'url'        => env('APP_URL') . '/storage/avatars',
+            'visibility' => 'public',
+            'throw'      => false,
+        ],
+
+        'uploads' => [
+            'driver'     => 'local',
+            'root'       => storage_path('app/uploads'),
+            'url'        => env('APP_URL') . '/storage/uploads',
+            'visibility' => 'public',
+            'throw'      => false,
+        ],
+
     ],
 
     /*
