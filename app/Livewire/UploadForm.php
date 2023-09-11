@@ -32,7 +32,6 @@ final class UploadForm extends Component
             throw $e;
         }
 
-        // fazer que o phpstan ignore o erro
         /** @phpstan-ignore-next-line */
         Media::query()->create([
             $file->toArray(),
