@@ -2,7 +2,7 @@
 [![CI Develop](https://github.com/felipe-silveira-dev/hey-professor/actions/workflows/laravel.yml/badge.svg?branch=develop)](https://github.com/felipe-silveira-dev/hey-professor/actions/workflows/laravel.yml)
 
 ## About Hey Professor
-An application to help teachers to manage their classes and students.
+An application to help instructors to receive questions from students.
 
 ## Installation
 
@@ -21,6 +21,7 @@ php artisan key:generate
 ```bash
 php artisan migrate --seed
 ```
+
 ```bash
 npm install
 ```
